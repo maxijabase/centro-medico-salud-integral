@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Centro Médico Salud Integral · Dr. Guillermo Zeitunlián</title>
+<meta name="description" content="Centro Médico Salud Integral: clínica médica, cardiología, electrocardiograma, Holter, MAPA, ecografías, laboratorio, kinesiología y nutrición. Pedí tu turno por WhatsApp.">
+<link rel="icon" type="image/png" sizes="64x64" href="img/favicon-64.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="preload" as="image" href="img/inicio-consulta-medica.webp" fetchpriority="high">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Manrope:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #FFFFFF;
+    --paper-2: #F5F9FB;
+    --tint: #E9F4F6;
+    --ink: #17324A;
+    --ink-soft: #5A6B7B;
+    --line: #E3EAEF;
+    --trace: #7CC4CF;
+    --go: #0A7C8C;
+    --go-hover: #086A78;
+    --on-go: #FFFFFF;
+    --display: "Manrope", "Segoe UI", system-ui, sans-serif;
+    --body: "Atkinson Hyperlegible", "Segoe UI", system-ui, -apple-system, sans-serif;
+    color-scheme: light;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  *, *::before, *::after { box-sizing: inherit; }
+  html { scroll-behavior: smooth; scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 72px); }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font: 400 1.125rem/1.6 var(--body);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: 1.12; margin: 0; letter-spacing: -0.01em; }
+  h2 { font-size: clamp(1.9rem, 4vw, 2.6rem); }
+  h3 { font-size: 1.25rem; font-weight: 500; }
+  p { margin: 0; }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--go); outline-offset: 3px; border-radius: 4px; }
+  .wrap { width: min(1120px, 100% - 2.5rem); margin-inline: auto; }
+
+  /* Encabezado */
+  header {
+    position: sticky; top: 0; z-index: 20;
+    background: color-mix(in srgb, var(--paper) 92%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  body::before {
+    content: ""; position: fixed; inset: 0 0 auto; z-index: 21;
+    height: env(safe-area-inset-top, 0px);
+    background: var(--paper);
+  }
+  .bar { display: flex; align-items: center; gap: 1.5rem; min-height: 64px; }
+  .brand { display: flex; align-items: center; gap: .65rem; text-decoration: none; flex-shrink: 0; }
+  .brand img { width: 62px; height: 38px; object-fit: contain; display: block; }
+  .brand b { font-family: var(--display); font-size: 1.05rem; line-height: 1.1; display: block; }
+  .brand small { font-size: .8rem; color: var(--ink-soft); }
+  nav { margin-left: auto; overflow-x: auto; scrollbar-width: none; }
+  nav::-webkit-scrollbar { display: none; }
+  nav ul { list-style: none; display: flex; gap: .25rem; margin: 0; padding: 0; white-space: nowrap; }
+  nav a {
+    display: block; padding: .5rem .85rem; border-radius: 999px;
+    text-decoration: none; font-size: .98rem; color: var(--ink-soft);
+  }
+  nav a:hover { color: var(--ink); background: var(--paper-2); }
+  nav a[aria-current="true"] { color: var(--ink); background: var(--paper-2); font-weight: 700; }
+  nav a.nav-turno { background: var(--go); color: var(--on-go); font-weight: 700; }
+  nav a.nav-turno:hover { background: var(--go-hover); color: var(--on-go); }
+  @media (max-width: 820px) {
+    .bar { flex-wrap: wrap; gap: 0; padding-top: .6rem; }
+    nav { margin-left: 0; width: calc(100% + 2.5rem); margin-inline: -1.25rem; padding: .5rem 1.25rem .6rem; }
+    nav a.nav-turno { display: none; }
+    html { scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 118px); }
+  }
+
+  /* Inicio */
+  .hero {
+    position: relative; overflow: hidden;
+    background: linear-gradient(180deg, var(--paper) 0%, var(--paper) 55%, var(--tint) 100%);
+  }
+  .hero .wrap { padding: clamp(3.5rem, 9vw, 6.5rem) 0 0; position: relative; z-index: 1; }
+  .hero-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; }
+  .hero-photo { margin: 0; border-radius: 24px; overflow: hidden; aspect-ratio: 4 / 3; background: var(--tint); box-shadow: 0 18px 40px -22px rgba(23, 50, 74, .35); }
+  .hero-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  @media (max-width: 860px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-photo { aspect-ratio: 16 / 10; }
+  }
+  .hero-doc {
+    display: inline-block; font-size: .98rem; color: var(--go); font-weight: 700;
+    background: var(--tint); padding: .35rem .85rem; border-radius: 999px; margin-bottom: 1.25rem;
+  }
+  .hero h1 { font-size: clamp(2.5rem, 7vw, 4.8rem); font-weight: 700; max-width: 14ch; letter-spacing: -0.025em; }
+  .hero-lead { margin-top: 1.25rem; max-width: 46ch; font-size: clamp(1.1rem, 2vw, 1.3rem); color: var(--ink-soft); }
+  .actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 2rem; }
+  .btn {
+    display: inline-flex; align-items: center; gap: .55rem;
+    padding: .9rem 1.4rem; border-radius: 12px;
+    font: 700 1.05rem/1 var(--body); text-decoration: none;
+    border: 2px solid transparent;
+  }
+  .btn svg { width: 20px; height: 20px; flex-shrink: 0; }
+  .btn-go { background: var(--go); color: var(--on-go); }
+  .btn-go:hover { background: var(--go-hover); }
+  .btn-line { border-color: var(--line); background: var(--paper); }
+  .btn-line:hover { border-color: var(--ink-soft); }
+  .ecg { display: block; width: 100%; height: clamp(90px, 14vw, 150px); margin-top: clamp(2rem, 5vw, 3.5rem); }
+  .ecg path { fill: none; stroke: var(--trace); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+  @media (prefers-reduced-motion: no-preference) {
+    .ecg path { stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw 2.8s cubic-bezier(.45,.05,.35,1) .3s forwards; }
+    @keyframes draw { to { stroke-dashoffset: 0; } }
+  }
+
+  section { padding: clamp(4rem, 9vw, 6.5rem) 0; }
+  .intro h2 + p { margin-top: 1rem; color: var(--ink-soft); max-width: 60ch; }
+  .about { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 6vw, 5rem); }
+  .about h2 { margin-bottom: 1rem; }
+  .about p + p { margin-top: 1rem; }
+  .about p { max-width: 52ch; }
+  @media (max-width: 760px) { .about { grid-template-columns: 1fr; } }
+
+  /* Servicios */
+  #servicios { background: var(--paper-2); }
+  .groups { margin-top: 3rem; display: grid; gap: 1.25rem; }
+  .group {
+    display: grid; grid-template-columns: 220px 1fr; gap: 1.5rem 3rem;
+    background: var(--paper); border: 1px solid var(--line); border-radius: 18px;
+    padding: 1rem clamp(1.25rem, 3vw, 2rem);
+  }
+  .group-head { padding-top: 1.15rem; }
+  .group-head h3 { font-family: var(--body); font-weight: 700; font-size: 1rem; color: var(--go); }
+  .group-head img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 12px; margin-top: .9rem; margin-bottom: 1rem; background: var(--tint); }
+  .group ul { list-style: none; margin: 0; padding: 0; }
+  .group li {
+    display: grid; grid-template-columns: 1fr auto; gap: .35rem 1.5rem; align-items: baseline;
+    padding: 1.1rem 0; border-bottom: 1px solid var(--line);
+  }
+  .group li:last-child { border-bottom: 0; }
+  .group li strong { font-family: var(--display); font-size: 1.2rem; font-weight: 600; }
+  .group li p { grid-column: 1; color: var(--ink-soft); font-size: 1.02rem; max-width: 58ch; }
+  .group li a {
+    grid-column: 2; grid-row: 1 / span 2; align-self: center;
+    font-size: .95rem; font-weight: 700; color: var(--go); text-decoration: none; white-space: nowrap;
+    padding: .45rem .8rem; border-radius: 999px; border: 1.5px solid currentColor;
+  }
+  .group li a:hover { background: var(--go); color: var(--on-go); border-color: var(--go); }
+  @media (max-width: 760px) {
+    .group { grid-template-columns: 1fr; gap: .5rem; }
+    .group-head { padding-top: .75rem; }
+    .group-head img { aspect-ratio: 16 / 7; margin-bottom: .25rem; }
+    .group li { grid-template-columns: 1fr; }
+    .group li a { grid-column: 1; grid-row: auto; justify-self: start; margin-top: .4rem; }
+  }
+
+  /* Banda con foto */
+  .band { padding: clamp(3.5rem, 8vw, 5.5rem) 0 0; }
+  .band .wrap {
+    position: relative; overflow: hidden; border-radius: 28px;
+    min-height: clamp(260px, 34vw, 380px); display: flex; align-items: center;
+  }
+  .band img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 70% 50%; }
+  .band .wrap::before {
+    content: ""; position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(90deg, rgba(8, 58, 66, .92) 0%, rgba(8, 58, 66, .82) 45%, rgba(8, 58, 66, .25) 100%);
+  }
+  .band-text { position: relative; z-index: 2; color: #fff; padding: clamp(2rem, 5vw, 3.5rem); max-width: 34rem; }
+  .band-text h2 { font-size: clamp(1.6rem, 3.6vw, 2.3rem); }
+  .band-text p { margin-top: .9rem; color: rgba(255, 255, 255, .9); }
+  @media (max-width: 760px) {
+    .band .wrap::before { background: rgba(8, 58, 66, .84); }
+  }
+
+  /* Ubicación */
+  .loc { display: grid; grid-template-columns: 1fr 1.35fr; gap: clamp(2rem, 5vw, 4rem); margin-top: 2.5rem; align-items: start; }
+  .loc dl { margin: 0; display: grid; gap: 1.5rem; }
+  .loc dt { font-weight: 700; margin-bottom: .2rem; }
+  .loc dd { margin: 0; color: var(--ink-soft); }
+  .hours { width: 100%; border-collapse: collapse; }
+  .hours td { padding: .3rem 0; border-bottom: 1px dashed var(--line); }
+  .hours td:last-child { text-align: right; }
+  .map { border-radius: 16px; overflow: hidden; border: 1px solid var(--line); aspect-ratio: 4 / 3; background: var(--paper-2); }
+  .map iframe { width: 100%; height: 100%; border: 0; display: block; }
+  @media (max-width: 760px) { .loc { grid-template-columns: 1fr; } }
+
+  /* Contacto */
+  #contacto { background: var(--paper-2); }
+  .channels { margin-top: 2.5rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+  .channels a {
+    display: flex; flex-direction: column; gap: .3rem; padding: 1.5rem;
+    text-decoration: none; background: var(--paper); border: 1px solid var(--line); border-radius: 18px;
+  }
+  .channels a:hover { border-color: var(--go); }
+  .channels span { color: var(--go); font-size: .95rem; font-weight: 700; }
+  .channels b { font-family: var(--display); font-weight: 600; font-size: 1.25rem; overflow-wrap: anywhere; }
+
+  /* Turno */
+  #turno { text-align: center; }
+  #turno .wrap { background: var(--tint); border-radius: 28px; padding: clamp(2.5rem, 7vw, 4.5rem) 1.5rem; }
+  #turno h2 { font-size: clamp(2rem, 5.5vw, 3.2rem); }
+  #turno p { margin: 1rem auto 0; max-width: 46ch; color: var(--ink-soft); font-size: 1.15rem; }
+  #turno .btn { margin-top: 2rem; background: var(--go); color: var(--on-go); font-size: 1.15rem; padding: 1.1rem 1.8rem; }
+  #turno .btn:hover { background: var(--go-hover); }
+  #turno .steps { list-style: none; padding: 0; margin: 2.5rem auto 0; display: flex; flex-wrap: wrap; justify-content: center; gap: .75rem 2rem; font-size: 1rem; color: var(--ink-soft); }
+
+  footer { padding: 2rem 0; font-size: .95rem; color: var(--ink-soft); border-top: 1px solid var(--line); }
+  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; }
+
+  /* Botón fijo en celular */
+  .sticky-turno { display: none; }
+  @media (max-width: 820px) {
+    .sticky-turno {
+      display: flex; justify-content: center; align-items: center; gap: .5rem;
+      position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
+      padding: .9rem 1rem calc(.9rem + env(safe-area-inset-bottom, 0px));
+      background: var(--go); color: var(--on-go);
+      font-weight: 700; font-size: 1.05rem; text-decoration: none;
+    }
+    .sticky-turno svg { width: 20px; height: 20px; }
+    footer { padding-bottom: 5.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#inicio" aria-label="Centro Médico Salud Integral, ir al inicio">
+      <img src="img/logo-salud-integral.webp" width="157" height="96" alt="Logo de Salud Integral: un corazón rojo con un tilde">
+      <span><b>Salud Integral</b><small>Centro Médico</small></span>
+    </a>
+    <nav aria-label="Secciones">
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#servicios">Servicios de salud</a></li>
+        <li><a href="#ubicacion">Ubicación</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+        <li><a href="#turno" class="nav-turno">Solicitá tu turno</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- INICIO -->
+  <div class="hero" id="inicio">
+    <div class="wrap hero-grid">
+      <div>
+      <p class="hero-doc">Dr. Guillermo Zeitunlián</p>
+      <h1>Centro Médico Salud Integral</h1>
+      <p class="hero-lead">Consultas, estudios cardiológicos, imágenes, laboratorio y rehabilitación en un mismo lugar.</p>
+      <div class="actions">
+        <a class="btn btn-go js-wa" href="#turno" data-msg="Hola, quisiera solicitar un turno.">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.3-.5 0-.9.2-3-.6-2.6-1-4.2-3.6-4.3-3.8-.1-.2-1-1.4-1-2.6s.6-1.9.9-2.1c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.1.1.7-.1 1.3Z"/></svg>
+          Solicitá tu turno
+        </a>
+        <a class="btn btn-line" href="#servicios">Ver servicios</a>
+      </div>
+      </div>
+      <figure class="hero-photo">
+        <img src="img/inicio-consulta-medica.webp" width="1600" height="900" fetchpriority="high" alt="Médico con guardapolvo blanco completando una historia clínica durante una consulta">
+      </figure>
+    </div>
+    <svg class="ecg" viewBox="0 0 1200 150" preserveAspectRatio="none" aria-hidden="true">
+      <path pathLength="1" d="M0 90 H140 l12 -10 l12 10 H190 l8 6 l14 -78 l16 112 l12 -40 H300 q20 -22 40 0 H520 l12 -10 l12 10 H570 l8 6 l14 -78 l16 112 l12 -40 H680 q20 -22 40 0 H900 l12 -10 l12 10 H950 l8 6 l14 -78 l16 112 l12 -40 H1060 q20 -22 40 0 H1200"/>
+    </svg>
+  </div>
+
+  <section class="intro">
+    <div class="wrap about">
+      <div>
+        <h2>Quiénes somos</h2>
+        <!-- EDITAR: texto de presentación -->
+        <p>Somos un centro médico de atención ambulatoria dirigido por el Dr. Guillermo Zeitunlián. Reunimos clínica médica, cardiología, estudios diagnósticos y rehabilitación para que puedas resolver tus controles de salud sin ir de un lugar a otro.</p>
+      </div>
+      <div>
+        <h2>Nuestro objetivo</h2>
+        <!-- EDITAR: objetivo del centro -->
+        <p>Acompañar a cada paciente con una atención cercana y completa: escuchar, estudiar lo necesario y explicar con claridad cada diagnóstico y tratamiento.</p>
+        <p>Creemos que la prevención y el seguimiento a tiempo son la mejor forma de cuidar la salud.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section id="servicios">
+    <div class="wrap">
+      <h2>Servicios de salud</h2>
+      <div class="groups">
+
+        <div class="group">
+          <div class="group-head"><h3>Consultas</h3><img src="img/servicio-consultas.webp" width="800" height="600" loading="lazy" alt="Estetoscopio y tensiómetro sobre una camilla"></div>
+          <ul>
+            <li><strong>Médico clínico</strong><p>Consultas generales, chequeos de rutina y seguimiento de presión, diabetes y colesterol.</p><a class="js-wa" href="#turno" data-msg="Hola, quisiera un turno con médico clínico.">Pedir turno</a></li>
+            <li><strong>Cardiología</strong><p>Evaluación del corazón y control del riesgo cardiovascular.</p><a class="js-wa" href="#turno" data-msg="Hola, quisiera un turno de cardiología.">Pedir turno</a></li>
+            <li><strong>Nutricionista</strong><p>Plan de alimentación personalizado para tus objetivos y tu salud.</p><a class="js-wa" href="#turno" data-msg="Hola, quisiera un turno con nutricionista.">Pedir turno</a></li>
+          </ul>
+        </div>
+
+        <div class="group">
+          <div class="group-head"><h3>Corazón y presión</h3><img src="img/servicio-presion-arterial.webp" width="800" height="600" loading="lazy" alt="Medición de la presión arterial con un tensiómetro digital en el brazo"></div>
+          <ul>
+            <li><strong>Electrocardiograma</strong><p>Registra la actividad eléctrica del corazón. Es rápido e indoloro.</p><a class="js-wa" href="#turno" data-msg="Hola, quisiera un turno para electrocardiograma.">Pedir turno</a></li>
+            <li><strong>MAPA</strong><p>Monitoreo de la presión arterial durante 24 horas mientras hacés tu vida normal.</p><a class="js-wa" href="#turno" data-msg="Hola, quisiera un turno para MAPA (monitoreo de presión de 24 horas).">Pedir turno</a></li>
+            <li><strong>Holter</strong><p>Registro del ritmo cardíaco durante 24 horas con un equipo pequeño y portátil.</p><a class="js-wa" href="#turno" data-msg="Hola, quisiera un turno para Holter.">Pedir turno</a></li>
+          </ul>
+        </div>
+
+        <div class="group">
+          <div class="group-head"><h3>Imágenes y laboratorio</h3><img src="img/servicio-laboratorio.webp" width="800" height="600" loading="lazy" alt="Tubos para muestras de sangre ordenados en una gradilla de laboratorio"></div>
+          <ul>
+            <li><strong>Ecografías</strong><p>Estudios por imágenes con ultrasonido, sin radiación.</p><a class="js-wa" href="#turno" data-msg="Hola, quisiera un turno para una ecografía.">Pedir turno</a></li>
+            <li><strong>Análisis de laboratorio</strong><p>Extracción y análisis clínicos. Consultanos la preparación antes de venir.</p><a class="js-wa" href="#turno" data-msg="Hola, quisiera un turno para análisis de laboratorio.">Pedir turno</a></li>
+          </ul>
+        </div>
+
+        <div class="group">
+          <div class="group-head"><h3>Aptos y evaluaciones</h3><img src="img/servicio-aptos-fisicos.webp" width="800" height="600" loading="lazy" alt="Planilla en blanco sobre un portapapeles junto a un estetoscopio"></div>
+          <ul>
+            <li><strong>Fichas médicas</strong><p>Aptos físicos para escuela, club, gimnasio o trabajo.</p><a class="js-wa" href="#turno" data-msg="Hola, quisiera un turno para ficha médica / apto físico.">Pedir turno</a></li>
+            <li><strong>Valoración prequirúrgica</strong><p>Evaluación clínica y cardiológica antes de una cirugía.</p><a class="js-wa" href="#turno" data-msg="Hola, quisiera un turno para valoración prequirúrgica.">Pedir turno</a></li>
+          </ul>
+        </div>
+
+        <div class="group">
+          <div class="group-head"><h3>Rehabilitación</h3><img src="img/servicio-kinesiologia.webp" width="800" height="600" loading="lazy" alt="Kinesiólogo trabajando la rodilla de un paciente acostado en una camilla"></div>
+          <ul>
+            <li><strong>Fisioterapia y kinesiología</strong><p>Tratamiento de lesiones, dolores y recuperación después de una cirugía.</p><a class="js-wa" href="#turno" data-msg="Hola, quisiera un turno de kinesiología.">Pedir turno</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- BANDA -->
+  <section class="band" aria-label="Prevención">
+    <div class="wrap">
+      <img src="img/banda-estetoscopio.webp" width="1600" height="1067" loading="lazy" alt="Estetoscopio sobre un fondo celeste">
+      <div class="band-text">
+        <h2>Prevenir es la mejor forma de cuidar tu salud</h2>
+        <p>Controles a tiempo, estudios en el mismo lugar y un seguimiento cercano de cada paciente.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- UBICACIÓN -->
+  <section id="ubicacion">
+    <div class="wrap">
+      <h2>Ubicación</h2>
+      <div class="loc">
+        <dl>
+          <div>
+            <dt>Dirección</dt>
+            <dd class="js-address">Dirección a completar</dd>
+          </div>
+          <div>
+            <dt>Horarios de atención</dt>
+            <dd>
+              <!-- EDITAR: horarios -->
+              <table class="hours">
+                <tr><td>Lunes a viernes</td><td>8 a 20 h</td></tr>
+                <tr><td>Sábados</td><td>8 a 12 h</td></tr>
+                <tr><td>Domingos y feriados</td><td>Cerrado</td></tr>
+              </table>
+            </dd>
+          </div>
+          <div>
+            <a class="btn btn-line js-maps" href="#" target="_blank" rel="noopener">Cómo llegar</a>
+          </div>
+        </dl>
+        <div class="map"><iframe class="js-map" title="Mapa del Centro Médico Salud Integral" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto">
+    <div class="wrap">
+      <h2>Contacto</h2>
+      <div class="channels">
+        <a class="js-wa" href="#turno" data-msg="Hola, tengo una consulta.">
+          <span>WhatsApp</span><b class="js-wa-label">Escribinos</b>
+        </a>
+        <a class="js-tel" href="#">
+          <span>Teléfono</span><b class="js-tel-label">A completar</b>
+        </a>
+        <a href="https://www.instagram.com/centro.medico.salud.integral/" target="_blank" rel="noopener">
+          <span>Instagram</span><b>@centro.medico.salud.integral</b>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TURNO -->
+  <section id="turno">
+    <div class="wrap">
+      <h2>Solicitá tu turno</h2>
+      <p>Escribinos por WhatsApp con el servicio que necesitás y te respondemos con los días disponibles.</p>
+      <a class="btn js-wa" href="#" data-msg="Hola, quisiera solicitar un turno.">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.3-.5 0-.9.2-3-.6-2.6-1-4.2-3.6-4.3-3.8-.1-.2-1-1.4-1-2.6s.6-1.9.9-2.1c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.1.1.7-.1 1.3Z"/></svg>
+        Pedir turno por WhatsApp
+      </a>
+      <ul class="steps">
+        <li>Contanos qué servicio necesitás</li>
+        <li>Indicá tu obra social o si es particular</li>
+        <li>Elegí día y horario</li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Centro Médico Salud Integral · Dr. Guillermo Zeitunlián</span>
+    <span>Ante una emergencia, llamá al 107.</span>
+  </div>
+</footer>
+
+<a class="sticky-turno js-wa" href="#turno" data-msg="Hola, quisiera solicitar un turno.">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.3-.5 0-.9.2-3-.6-2.6-1-4.2-3.6-4.3-3.8-.1-.2-1-1.4-1-2.6s.6-1.9.9-2.1c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.1.1.7-.1 1.3Z"/></svg>
+  Solicitá tu turno
+</a>
+
+<script>
+  /* ============================================================
+     DATOS DEL CONSULTORIO: completá esto y listo
+     ============================================================ */
+  const CONFIG = {
+    // WhatsApp en formato internacional, solo números (ej: 5493511234567)
+    whatsapp: "5493518096288",
+    whatsappVisible: "351 809 6288",   // cómo se muestra en Contacto
+    // Teléfono fijo o celular como querés que se muestre y se marque
+    telefonoVisible: "351 809 6288",
+    telefonoMarcar: "+5493518096288",   // ej: +543511234567
+    // Dirección completa (se usa también para el mapa)
+    direccion: "Guayaquil 974, Residencial América, Córdoba"
+  };
+  /* ============================================================ */
+
+  (function () {
+    const waNumber = CONFIG.whatsapp.replace(/\D/g, "");
+    document.querySelectorAll(".js-wa").forEach(function (a) {
+      if (!waNumber) return;
+      const msg = a.getAttribute("data-msg") || "Hola, quisiera solicitar un turno.";
+      a.href = "https://wa.me/" + waNumber + "?text=" + encodeURIComponent(msg);
+      a.target = "_blank";
+      a.rel = "noopener";
+    });
+    if (waNumber) {
+      const label = document.querySelector(".js-wa-label");
+      if (label) label.textContent = CONFIG.whatsappVisible || "+" + waNumber;
+    }
+
+    if (CONFIG.telefonoVisible) {
+      document.querySelector(".js-tel-label").textContent = CONFIG.telefonoVisible;
+      document.querySelector(".js-tel").href = "tel:" + (CONFIG.telefonoMarcar || CONFIG.telefonoVisible).replace(/[^\d+]/g, "");
+    }
+
+    if (CONFIG.direccion) {
+      const q = encodeURIComponent(CONFIG.direccion);
+      document.querySelector(".js-address").textContent = CONFIG.direccion;
+      document.querySelector(".js-map").src = "https://www.google.com/maps?q=" + q + "&output=embed";
+      document.querySelector(".js-maps").href = "https://www.google.com/maps/search/?api=1&query=" + q;
+    }
+
+    // Marca la pestaña activa según la sección visible
+    const links = Array.from(document.querySelectorAll("nav a"));
+    const ids = ["inicio", "servicios", "ubicacion", "contacto", "turno"];
+    const targets = ids.map(function (id) { return document.getElementById(id); }).filter(Boolean);
+    if ("IntersectionObserver" in window) {
+      const io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          links.forEach(function (l) {
+            l.setAttribute("aria-current", l.getAttribute("href") === "#" + e.target.id ? "true" : "false");
+          });
+        });
+      }, { rootMargin: "-45% 0px -50% 0px" });
+      targets.forEach(function (t) { io.observe(t); });
+    }
+  })();
+</script>
+</body>
+</html>
